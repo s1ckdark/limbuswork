@@ -1,0 +1,13 @@
+{
+  "title": "ff",
+  "name": "ff",
+  "version": "0.1.0",
+  "description": "almost",
+  "main": "index.js",
+  "author": "dave",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT"
+}
