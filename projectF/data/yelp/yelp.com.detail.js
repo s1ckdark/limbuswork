@@ -1,82 +1,95 @@
 var jq = document.createElement('script');jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js";document.getElementsByTagName('head')[0].appendChild(jq);
 
-function GetContent (url, elm) {
-var source = $('html').get(); // get rendering page.
-var sourceTree; // object array
+$('.biz-listing > div.info-col.flex-box > h3 > a').attr('href');
 
+
+//var source = $('html').get(); // get rendering page.
+var sourceTree; // object array
+var listing = document.querySelectorAll('.biz-listing');
+for(i=0;i<listing.length;i++){
+	var hlink=document.querySelectorAll('.biz-listing > div > h3 > a')[i].href;
+	var obj = $.ajax({type: "GET", url: hlink, async: false,  dataType: "text"}).responseText;
+    result = JSON.parse(obj);
+    var telephone=$(result.body).find('[itemprop=telephone]').text();console.log(telephone);
+}
 /* inforamtion of restarunts */
 
-var res_name = $(".embossed-text-white").text();
+var res_name = $('[itemprop=streetAddress]').text();
 var res_addr_street_no= $("address.flex-box").text() 
-var res_addr_street_name = $(function(){
-	var metas = document.querySelectorAll(["span"]);
-	for (var i=0; i<metas.length;i++) {
-	if (metas [i].getAttribute("itemprop") && metas[i].getAttribute("itemprop")=="streetAddress") {
-		document.querySelectorAll(["span"])[i].textContent }}; });
-
-var res_addr_suite_no = $().textContent; 
-var res_addr_city = 
-var metas = document.querySelectorAll(["span"]);
-for (var i=0; i<metas.length;i++) {
-if (metas [i].getAttribute("itemprop") && metas[i].getAttribute("itemprop")=="addressLocality") {
-document.querySelectorAll(["span"])[i].textContent }};
-
-var res_addr.state = var metas = document.querySelectorAll(["span"]);
-for (var i=0; i<metas.length;i++) {
-if (metas [i].getAttribute("itemprop") && metas[i].getAttribute("itemprop")=="addressRegion") {
-document.querySelectorAll(["span"])[i].textContent }};
-
-var res_addr.zipcode= var metas = document.querySelectorAll(["span"]);
-for (var i=0; i<metas.length;i++) {
-if (metas [i].getAttribute("itemprop") && metas[i].getAttribute("itemprop")=="postalCode") {
-document.querySelectorAll(["span"])[i].textContent }};
-
+var res_addr_street_name =$('[itemprop=streetAddress]').text();
+var res_addr_suite_no = null;
+var res_addr_city = $('[itemprop=addressLocality]').text();
+var res_addr_state = $('[itemprop=addressRegion]').text();
+var res_addr_zipcode = $('[itemprop=postalCode]').text();
 var res_phone = $(".action-sub-text").text();
 var res_web_url = $(".biz-website>a").attr("href");
-var res_health_scope= $().textContent; 
-var res_delivery_info.does_deliver = $(".subtle-text:contains('Delivery')").parent().text().replace('Delivery','')
-var res_delivery_info.fee= $().textContent; 
-var res_delivery_info.min_order = $().textContent; 
-var res_delivery_info.coverage= $().textContent;  //array
-var res_take_out = $(".subtle-text:contains('Take-out')").parent().text().replace('Take-out','');
-var res_menu.entry_name = $().textContent; 
-var res_menu.image_url= $().textContent; 
-var res_menu.category_one = $().textContent; 
-var res_menu.category_two = $().textContent; 
-var res_menu.is_poopular = $().textContent;  // array
-var res_menu.external_link = $().textContent; 
+
+var res_health_scope= null; 
+
+var res_delivery_info_does_deliver = null;
+var res_delivery_info_fee= null; 
+var res_delivery_info_min_order = null; 
+var res_delivery_info_coverage= null;  //array
+
+var res_take_out = null;
+var res_menu_entry_name = null; 
+var res_menu_image_url= null; 
+var res_menu_category_one = null; 
+var res_menu_category_two = null; 
+var res_menu_is_poopular = null;  // array
+var res_menu_external_link = null; 
 var res_hours= $(".subtle-text:contains('Hours')").parent().text().replace('Hours','');  //array
-var s_site_name= $().textContent; 
-var res_menu_popular= $().textContent;  //array
+var s_site_name= null; 
+var res_menu_popular= null;  //array
 var res_category_keywords= $(".biz-details-snippet>ul>.category").text().trim().split(",");  //array
 var res_cuisine_type= $(".biz-details-snippet>ul>.category").text().trim().split(",")  //array res_category_keywords와 중첩?
 var res_price_range= $("#price_tip").text(); 
 var res_page_url = document.querySelector("link[hreflang='en-us']").href;
-var res_search_info	= $().textContent; 
-var res_search_info.query= document.URL.split("osq=")[1].replace(/\+/g," "); 
-var res_search_info.suggestion	= $(".item.suggestion div.suggestion-name") //array ????
-var res_search_info.location	= $("input[name='find_loc'").val(); 
+var res_search_info	= null; 
+var res_search_info_query= document.URL.split("osq=")[1].replace(/\+/g," "); 
+var res_search_info_suggestion	= $(".item.suggestion div.suggestion-name") //array ????
+var res_search_info_location	= $("input[name='find_loc'").val(); 
 /* information of sites */
-var res_path		= $().textContent; //array
-var res_order_info.type	= $("input[name='selected-form']:checked").parent().text(); 
-var res_order_info.time= $().textContent; 
-var res_order_info.wait_time	= $().textContent; 
-var res_order_info.menu= $().textContent; //obejct.array
-var res_order_info.address	= $().textContent; 
-var res_reserv_info.request_time	= $().textContent; 
-var res_reserv_info.reserve_time	= $().textContent; 
-var res_reserv_info.how_many	= $().textContent; 
+var res_path		= null; //array
+var res_order_info_type	= $("input[name='selected-form']:checked").parent().text(); 
+var res_order_info_time= null; 
+var res_order_info_wait_time	= null; 
+var res_order_info_menu= null; //obejct.array
+var res_order_info_address	= null; 
+var res_reserv_info_request_time	= null; 
+var res_reserv_info_reserve_time	= null; 
+var res_reserv_info_how_many	= null; 
 /* information of users */
-var res_filter_info.sort_by	= $().textContent; 
-var res_filter_info.neighborhood	= $().textContent; //array 
-var res_filter_info.distance	= $().textContent; 
-var res_filter_info.price_range	= var price_range=[];
-for(var i=0; i<$(".clearfix.set-4 span").length; i++){
-price_range[i] = $(".clearfix.set-4 span")[i].textContent.trim();
-}; //array
-var res_filter_info.rating	= $().textContent;  //array
-var res_filter_info.features	= $().textContent; //arrary
-var res_filter_info.category	= $().textContent; //array
-var res_filter_info.airport	= $().textContent; 
-var res_filter_info.dining_option	= $().textContent; 
+var res_filter_info_sort_by	= null; 
+var res_filter_info_neighborhood	= null; //array 
+var res_filter_info_distance	= null; 
+var res_filter_info_price_range	= $('_biz-attrs > li:nth-child(2)');
+var res_filter_info_rating	= null; //array
+var res_filter_info_features	= null; //arrary
+var res_filter_info_category	= null; //array
+var res_filter_info_airport	= null; 
+var res_filter_info_dining_option	= null; 
+/* json */
+var objel = ["res_name":res_name,"res_addr_street_no":res_addr_street_no,"res_addr_street_name","res_addr_suite_no","res_addr_citystatezipcode","res_addr_zipcode","res_phone","res_web_url","res_health_scope","res_delivery_info_does_deliver","res_delivery_info_fee","res_delivery_info_min_order","res_delivery_info_coverage","res_take_out","res_menu_entry_name","res_menu_image_url","res_menu_category_one","res_menu_category_two","res_menu_is_poopular","res_menu_external_link","res_hours","s_site_name","res_menu_popular","res_category_keywords","res_cuisine_type","res_price_range","res_page_url","res_search_info","res_search_info_query","res_search_info_suggestion","res_search_info_location	","res_path","res_order_info_type","res_order_info_time","res_order_info_wait_time","res_order_info_menu","res_order_info_address","res_reserv_info_request_time","res_reserv_info_reserve_time","res_reserv_info_how_many","res_filter_info_sort_by","res_filter_info_neighborhood","res_filter_info_distance","res_filter_info_price_range","res_filter_info_rating","res_filter_info_features","res_filter_info_category","res_filter_info_airport","res_filter_info_dining_option"]
+var obj = [];
+var objContent = [];
+var biz_listing_len=$('.biz-listing').length;
+for(var i=0;i<biz_listing_len;i++){
+	for(var j=0;j<objel.length;j++){
+		var objel = ["res_name":res_name,"res_addr_street_no","res_addr_street_name","res_addr_suite_no","res_addr_citystatezipcode","res_addr_zipcode","res_phone","res_web_url","res_health_scope","res_delivery_info_does_deliver","res_delivery_info_fee","res_delivery_info_min_order","res_delivery_info_coverage","res_take_out","res_menu_entry_name","res_menu_image_url","res_menu_category_one","res_menu_category_two","res_menu_is_poopular","res_menu_external_link","res_hours","s_site_name","res_menu_popular","res_category_keywords","res_cuisine_type","res_price_range","res_page_url","res_search_info","res_search_info_query","res_search_info_suggestion","res_search_info_location	","res_path","res_order_info_type","res_order_info_time","res_order_info_wait_time","res_order_info_menu","res_order_info_address","res_reserv_info_request_time","res_reserv_info_reserve_time","res_reserv_info_how_many","res_filter_info_sort_by","res_filter_info_neighborhood","res_filter_info_distance","res_filter_info_price_range","res_filter_info_rating","res_filter_info_features","res_filter_info_category","res_filter_info_airport","res_filter_info_dining_option"]
+
+		obj.push(test);
 }
+objContent.push(obj);
+
+/*
+function getContent(result, url)
+{
+    var obj = $.ajax({type: "GET", url: url, async: false, dataType: "json"}).responseText;
+    result = JSON.parse(obj);
+    return;
+}
+
+var tt=$.get('http://m.yelp.com//biz/s-and-r-lounge-san-francisco', function(data){
+    $(data.body).find('[itemprop="reviewCount"]').text();
+});*/
