@@ -75,47 +75,34 @@ var res_menu_popular= null;  //array
 var res_category_keywords= $(".biz-details-snippet>ul>.category").text().trim().split(",");  //array
 var res_cuisine_type= $(".biz-details-snippet>ul>.category").text().trim().split(",")  //array res_category_keywords와 중첩?
 var res_price_range= $("#price_tip").text(); 
-//var res_page_url = document.querySelector("link[hreflang='en-us']").href;
-//var res_search_info	= null;
-//var res_search_info_query= document.URL.split("osq=")[1].replace(/\+/g," ");
-//var res_search_info_suggestion	= $(".item.suggestion div.suggestion-name") //array ????
-//var res_search_info_location	= $("input[name='find_loc'").val();
-///* information of sites */
-//var res_path		= null; //array
-//var res_order_info_type	= $("input[name='selected-form']:checked").parent().text();
-//var res_order_info_time= null;
-//var res_order_info_wait_time	= null;
-//var res_order_info_menu= null; //obejct.array
-//var res_order_info_address	= null;
-//var res_reserv_info_request_time	= null;
-//var res_reserv_info_reserve_time	= null;
-//var res_reserv_info_how_many	= null;
-///* information of users */
-//var res_filter_info_sort_by	= null;
-//var res_filter_info_neighborhood	= null; //array
-//var res_filter_info_distance	= null;
-//var res_filter_info_price_range	= $('_biz-attrs > li:nth-child(2)');
-//var res_filter_info_rating	= null; //array
-//var res_filter_info_features	= null; //arrary
-//var res_filter_info_category	= null; //array
-//var res_filter_info_airport	= null;
-//var res_filter_info_dining_option	= null;
+var res_page_url = document.querySelector("link[hreflang='en-us']").href;
+var res_search_info	= null;
+var res_search_info_query= document.URL.split("osq=")[1].replace(/\+/g," ");
+var res_search_info_suggestion	= $(".item.suggestion div.suggestion-name") //array ????
+var res_search_info_location	= $("input[name='find_loc'").val();
+/* information of sites */
+var res_path		= null; //array
+var res_order_info_type	= $("input[name='selected-form']:checked").parent().text();
+var res_order_info_time= null;
+var res_order_info_wait_time	= null;
+var res_order_info_menu= null; //obejct.array
+var res_order_info_address	= null;
+var res_reserv_info_request_time	= null;
+var res_reserv_info_reserve_time	= null;
+var res_reserv_info_how_many	= null;
+/* information of users */
+var res_filter_info_sort_by	= null;
+var res_filter_info_neighborhood	= null; //array
+var res_filter_info_distance	= null;
+var res_filter_info_price_range	= $('_biz-attrs > li:nth-child(2)');
+var res_filter_info_rating	= null; //array
+var res_filter_info_features	= null; //arrary
+var res_filter_info_category	= null; //array
+var res_filter_info_airport	= null;
+var res_filter_info_dining_option	= null;
 /* json */
 var objel = ["res_name","res_addr_street_no","res_addr_street_name","res_addr_suite_no","res_addr_citystatezipcode","res_addr_zipcode","res_phone","res_web_url","res_health_scope","res_delivery_info_does_deliver","res_delivery_info_fee","res_delivery_info_min_order","res_delivery_info_coverage","res_take_out","res_menu_entry_name","res_menu_image_url","res_menu_category_one","res_menu_category_two","res_menu_is_poopular","res_menu_external_link","res_hours","s_site_name","res_menu_popular","res_category_keywords","res_cuisine_type","res_price_range","res_page_url","res_search_info","res_search_info_query","res_search_info_suggestion","res_search_info_location	","res_path","res_order_info_type","res_order_info_time","res_order_info_wait_time","res_order_info_menu","res_order_info_address","res_reserv_info_request_time","res_reserv_info_reserve_time","res_reserv_info_how_many","res_filter_info_sort_by","res_filter_info_neighborhood","res_filter_info_distance","res_filter_info_price_range","res_filter_info_rating","res_filter_info_features","res_filter_info_category","res_filter_info_airport","res_filter_info_dining_option"]
 var json = { };
 for(var i = 0, l = objel.length; i < l; i++) {
     json[objel[i]] = +objel[i];
 }
-/* json end */
-
-/*
-function getContent(result, url)
-{
-    var obj = $.ajax({type: "GET", url: url, async: false, dataType: "json"}).responseText;
-    result = JSON.parse(obj);
-    return;
-}
-
-var tt=$.get('http://m.yelp.com//biz/s-and-r-lounge-san-francisco', function(data){
-    $(data.body).find('[itemprop="reviewCount"]').text();
-});*/
