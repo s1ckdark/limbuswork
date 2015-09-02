@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>background_local</title>
+    <script>
+        document.documentElement.addEventListener("event-from-cs", function(event) {
+            console.log("event detail message: " + event.detail);
+        }, false);
+    </script>
+</head>
+<body>
+<p>Hello</p>
+</body>
+</html>
