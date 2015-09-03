@@ -11,11 +11,24 @@ $('.interactive-list-item').each(function(index){
             var parser=new DOMParser();
             var xmlDoc=parser.parseFromString(xhr.responseText,"text/html");
             var wrap=xmlDoc.getElementById('wrap'); // replace(/<\s*script.*?>.*?(<\s*\/script.*?>|$)/ig,'');
-            $("#content"+index+"").html(wrap);
-            var interval = setInterval(function () {
-        // Ready
-        if ($('.pw #wrap').length == $('.interactive-list-item').length) {
-                  clearInterval(interval);
+            $("#content"+index+"").html(wrap);}}
+        //     var interval = setInterval(function () {
+        // // Ready
+        // if ($('.pw #wrap').length == $('.interactive-list-item').length) {
+        //           clearInterval(interval);
+        
+   //     } else { // Do we give up?
+//         clearInterval(interval);
+//         // Give up
+
+//     }
+// }, 1); // Checks once every second
+//             }
+//   }
+    xhr.send(null);
+});
+
+
      res_name = $('[itemprop=streetAddress]').text();
      res_addr_street_no = $("address.flex-box").text();
      res_addr_street_name = $('[itemprop=streetAddress]').text();
@@ -25,22 +38,7 @@ $('.interactive-list-item').each(function(index){
      res_addr_zipcode = $('[itemprop=postalCode]').text();
      res_phone = $(".action-sub-text").text();
      res_web_url = $(".biz-website>a").attr("href");
-    console.log(res_phone);
-
-    } else { // Do we give up?
-        clearInterval(interval);
-        // Give up
-
-    }
-}, 1); // Checks once every second
-            }
-
-
-
-
-  }
-    xhr.send(null);
-});
+     console.log(res_phone);
 
 // var checkState = function() {
 //   if ($('.pw').find('#wrap').length == $('.interactive-list-item').length) {
