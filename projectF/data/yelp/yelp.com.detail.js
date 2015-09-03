@@ -1,7 +1,10 @@
 var jq = document.createElement('script');jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js";document.getElementsByTagName('head')[0].appendChild(jq);
 
+<<<<<<< Updated upstream
 $('.biz-listing > div.info-col.flex-box > h3 > a').attr('href');
 
+=======
+>>>>>>> Stashed changes
 //var source = $('html').get(); // get rendering page.
 var sourceTree; // object array
 var listing = document.querySelectorAll('li.interactive-list-item');
@@ -102,7 +105,18 @@ var res_filter_info_airport	= null;
 var res_filter_info_dining_option	= null;
 /* json */
 var objel = ["res_name","res_addr_street_no","res_addr_street_name","res_addr_suite_no","res_addr_citystatezipcode","res_addr_zipcode","res_phone","res_web_url","res_health_scope","res_delivery_info_does_deliver","res_delivery_info_fee","res_delivery_info_min_order","res_delivery_info_coverage","res_take_out","res_menu_entry_name","res_menu_image_url","res_menu_category_one","res_menu_category_two","res_menu_is_poopular","res_menu_external_link","res_hours","s_site_name","res_menu_popular","res_category_keywords","res_cuisine_type","res_price_range","res_page_url","res_search_info","res_search_info_query","res_search_info_suggestion","res_search_info_location	","res_path","res_order_info_type","res_order_info_time","res_order_info_wait_time","res_order_info_menu","res_order_info_address","res_reserv_info_request_time","res_reserv_info_reserve_time","res_reserv_info_how_many","res_filter_info_sort_by","res_filter_info_neighborhood","res_filter_info_distance","res_filter_info_price_range","res_filter_info_rating","res_filter_info_features","res_filter_info_category","res_filter_info_airport","res_filter_info_dining_option"]
+<<<<<<< Updated upstream
 var json = { };
 for(var i = 0, l = objel.length; i < l; i++) {
     json[objel[i]] = +objel[i];
+=======
+var obj = [];
+var objContent = [];
+var biz_listing_len=$('.biz-listing').length;
+for(var i=0;i<biz_listing_len;i++){
+	for(var j=0;j<objel.length;j++){
+		var objel = ["res_name","res_addr_street_no","res_addr_street_name","res_addr_suite_no","res_addr_citystatezipcode","res_addr_zipcode","res_phone","res_web_url","res_health_scope","res_delivery_info_does_deliver","res_delivery_info_fee","res_delivery_info_min_order","res_delivery_info_coverage","res_take_out","res_menu_entry_name","res_menu_image_url","res_menu_category_one","res_menu_category_two","res_menu_is_poopular","res_menu_external_link","res_hours","s_site_name","res_menu_popular","res_category_keywords","res_cuisine_type","res_price_range","res_page_url","res_search_info","res_search_info_query","res_search_info_suggestion","res_search_info_location	","res_path","res_order_info_type","res_order_info_time","res_order_info_wait_time","res_order_info_menu","res_order_info_address","res_reserv_info_request_time","res_reserv_info_reserve_time","res_reserv_info_how_many","res_filter_info_sort_by","res_filter_info_neighborhood","res_filter_info_distance","res_filter_info_price_range","res_filter_info_rating","res_filter_info_features","res_filter_info_category","res_filter_info_airport","res_filter_info_dining_option"]
+
+		obj.push(test);
+>>>>>>> Stashed changes
 }
